@@ -1,0 +1,9 @@
+[zsh.files]
+zshrc = "~/.zshrc"
+
+
+[p10k.files]
+p10k = "~/.p10k.zsh"
+
+[tmux.files]
+tmux = { target = "~/.config/tmux", type = "template" }
