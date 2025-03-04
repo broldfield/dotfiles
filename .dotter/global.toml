@@ -1,10 +1,12 @@
 [shell.files]
-tmux = "~/.tmux.conf"
+".tmux.conf"= "~/.tmux.conf"
 
 [zsh]
 depends = ["shell"]
 
 [zsh.files]
-zshrc = "~/.zshrc"
+".zshrc" = "~/.zshrc"
+".p10k.zsh" =  "~/.p10k.zsh"
 
-
+[nvim.files]
+".nvim_config/nvim/" = "~/.config/nvim/"
