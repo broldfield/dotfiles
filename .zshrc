@@ -9,7 +9,7 @@ fi
 # export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Path to your Oh My Zsh installation.
-export ZSH="$HOME/.dotfiles/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time Oh My Zsh is loaded, in which case,
@@ -71,13 +71,16 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rust)
+plugins=(git rust zsh-autosuggestions pyenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -111,4 +114,41 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.dotfiles/.p10k.zsh ]] || source ~/.dotfiles/.p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+
+# Alias
+alias vim="nvim"
+alias tvim="tmux new -s vim"
+alias pvim="poetry run nvim"
+alias e="eza"
+alias ea="eza -a"
+alias bat="batcat"
+
+# Pyenv Settings
+eval "$(pyenv virtualenv-init -)"
+
+# Keybinds
+bindkey -s ^f "tmux-sessioniser\n"
+
+export PATH=/home/boldfield/.local/bin:$PATH
+export PATH=/usr/local/go/bin:$PATH
+export PATH=/home/boldfield/.cargo/bin:$PATH
+export GOPATH=$HOME/.go
+
+export EDITOR=nvim
+export VOLTA_HOME=$HOME/.volta
+export PATH=$VOLTA_HOME/bin:$PATH
+
+# Function for Yazi. Binds running to y, and closing to q.
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+# Must be at end
+eval "$(zoxide init zsh)"

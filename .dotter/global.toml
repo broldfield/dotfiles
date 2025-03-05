@@ -1,12 +1,16 @@
 [shell.files]
-".tmux.conf"= "~/.tmux.conf"
+".tmux.conf" = "~/.tmux.conf"
+"tmux-sessioniser" = "~/.local/bin/tmux-sessioniser"
 
 [zsh]
 depends = ["shell"]
 
 [zsh.files]
 ".zshrc" = "~/.zshrc"
-".p10k.zsh" =  "~/.p10k.zsh"
+".p10k.zsh" = "~/.p10k.zsh"
+
+[ohmyzsh.files]
+".oh-my-zsh/" = "~/.oh-my-zsh"
 
 [nvim.files]
 ".nvim_config/nvim/" = "~/.config/nvim/"
