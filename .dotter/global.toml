@@ -9,8 +9,5 @@ depends = ["shell"]
 ".zshrc" = "~/.zshrc"
 ".p10k.zsh" = "~/.p10k.zsh"
 
-[ohmyzsh.files]
-".oh-my-zsh/" = "~/.oh-my-zsh"
-
 [nvim.files]
 ".nvim_config/nvim/" = "~/.config/nvim/"

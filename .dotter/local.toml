@@ -1,1 +1,1 @@
-packages = ["shell", "zsh", "ohmyzsh", "nvim"]
+packages = ["shell", "zsh", "nvim"]
